@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>백암고등학교 1학년 3반 학급 홈페이지 (시골 방앗간)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icon CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Gungsuh / Gowun Batang / Gamja Flower) -->
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Gowun+Batang:wght@400;700&family=Gungsuh&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 궁서체 및 정겨운 시골 바탕체 설정 */
+        body {
+            font-family: 'Gowun Batang', 'Gungsuh', serif;
+            background-color: #f6f0e6;
+            background-image: radial-gradient(#e2d5c3 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        
+        .font-gungsuh {
+            font-family: 'Gungsuh', 'Gowun Batang', serif;
+        }
+
+        .font-gamja {
+            font-family: 'Gamja Flower', cursive, serif;
+        }
+
+        /* 통나무/나무판자 느낌 효과 */
+        .wood-panel {
+            background: #8b5a2b;
+            background: linear-gradient(135deg, #8a5229 0%, #633817 100%);
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.2), 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* 멍석/짚풀 카드 느낌 */
+        .rural-card {
+            background-color: #fffdf8;
+            border: 2px solid #d4c2a5;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .rural-card:hover {
+            transform: translateY(-6px) rotate(-1deg);
+            border-color: #8b5a2b;
+            box-shadow: 0 12px 20px -5px rgba(139, 90, 43, 0.2);
+        }
+
+        /* 벼 이삭 흔들리는 애니메이션 */
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        .sway-rice {
+            display: inline-block;
+            transform-origin: bottom center;
+            animation: sway 3s ease-in-out infinite;
+        }
+
+        /* 훈훈한 시골 안개 배경 연출 */
+        .bg-paddy {
+            position: fixed;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(to top, rgba(163, 177, 138, 0.3), transparent);
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative text-amber-950">
+
+    <!-- 하단 들녘 안개 레이어 -->
+    <div class="bg-paddy"></div>
+
+    <!-- 상단 헤더 영역 (시골 나무 현판 스타일) -->
+    <header class="bg-amber-900 text-amber-100 border-b-4 border-amber-950 sticky top-0 z-50 shadow-md">
+        <div class="max-w-4xl mx-auto px-4 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3">
+            
+            <div class="flex items-center space-x-3">
+                <!-- 백암순대 뚝배기 그래픽 아이콘 -->
+                <div class="w-12 h-12 rounded-full bg-amber-100 border-2 border-amber-700 flex items-center justify-center shadow-inner shrink-0 p-1">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <!-- 뚝배기 그릇 -->
+                        <path d="M 15 50 Q 15 85 50 85 Q 85 85 85 50 Z" fill="#3a2518" />
+                        <rect x="10" y="42" width="80" height="10" rx="3" fill="#523624" />
+                        <!-- 김이 모락모락 -->
+                        <path d="M 30 35 Q 35 25 30 15" stroke="#e0d0c0" stroke-width="3" fill="none" stroke-linecap="round" />
+                        <path d="M 50 35 Q 55 20 50 10" stroke="#e0d0c0" stroke-width="4" fill="none" stroke-linecap="round" />
+                        <path d="M 70 35 Q 75 25 70 15" stroke="#e0d0c0" stroke-width="3" fill="none" stroke-linecap="round" />
+                        <!-- 백암순대 조각들 -->
+                        <ellipse cx="38" cy="58" rx="12" ry="7" fill="#5c2420" stroke="#8c4438" stroke-width="2"/>
+                        <ellipse cx="62" cy="58" rx="12" ry="7" fill="#5c2420" stroke="#8c4438" stroke-width="2"/>
+                        <ellipse cx="50" cy="68" rx="14" ry="8" fill="#421a17" stroke="#75372d" stroke-width="2"/>
+                    </svg>
+                </div>
+
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-gungsuh font-bold tracking-wide flex items-center gap-2 text-amber-50">
+                        <span>🌾 백암고등학교</span>
+                        <span class="text-yellow-300 underline decoration-wavy decoration-amber-500">1학년 3반</span>
+                    </h1>
+                    
+                    <!-- 백암인의 정신 수칙 상단 헤더 박스 (시골 원조 문구) -->
+                    <div class="mt-2 bg-amber-950/80 border border-amber-700/80 rounded-lg px-3 py-2 shadow-inner">
+                        <p class="text-xs font-bold text-yellow-400 flex items-center gap-1.5 mb-1 font-gungsuh">
+                            <span>📜</span> &lt;백암인의 정신&gt;
+                        </p>
+                        <ol class="text-xs font-bold text-amber-100 space-y-0.5 pl-0.5 font-gungsuh">
+                            <li class="flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-yellow-600 text-amber-950 flex items-center justify-center text-[10px] font-black shrink-0">1</span> 
+                                공부해서 도시로 가기
+                            </li>
+                            <li class="flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-yellow-600 text-amber-950 flex items-center justify-center text-[10px] font-black shrink-0">2</span> 
+                                모내기는 빠지지 않기
+                            </li>
+                            <li class="flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-yellow-600 text-amber-950 flex items-center justify-center text-[10px] font-black shrink-0">3</span> 
+                                감자 훔치지 않기
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 시골 연도 뱃지 -->
+            <div class="text-xs font-bold bg-amber-800 border border-yellow-600/50 text-yellow-200 px-3.5 py-1.5 rounded-full shadow-sm flex items-center gap-1.5 self-center font-gungsuh">
+                <span class="sway-rice">🌾</span>
+                2026학년도 들녘 풍년
+            </div>
+        </div>
+    </header>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <main class="max-w-4xl mx-auto px-4 py-8 md:py-10 w-full flex-grow">
+        
+        <!-- 히어로 구수한 사투리 배너 -->
+        <section class="wood-panel rounded-3xl p-6 md:p-8 text-amber-100 border-4 border-amber-950 shadow-2xl mb-10 relative overflow-hidden">
+            <!-- 배경 수놓은 벼 이삭 SVG 장식 -->
+            <div class="absolute -right-4 -bottom-6 opacity-20 text-yellow-300 pointer-events-none">
+                <svg width="180" height="180" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M20,90 Q50,60 50,10 Q50,60 80,90 Z" />
+                    <circle cx="50" cy="15" r="6"/>
+                    <circle cx="40" cy="25" r="6"/>
+                    <circle cx="60" cy="25" r="6"/>
+                    <circle cx="35" cy="40" r="7"/>
+                    <circle cx="65" cy="40" r="7"/>
+                    <circle cx="30" cy="55" r="7"/>
+                    <circle cx="70" cy="55" r="7"/>
+                </svg>
+            </div>
+
+            <div class="relative z-10">
+                <div class="inline-flex items-center space-x-2 bg-amber-950/60 border border-yellow-600/40 px-3.5 py-1 rounded-full text-xs font-bold mb-3 text-yellow-300 font-gungsuh">
+                    <span>🌾 어서 오셔유! 백암고 3반 동네 사랑방이유</span>
+                </div>
+                <h2 class="text-2xl md:text-4xl font-gungsuh font-bold mb-3 leading-tight text-yellow-100 drop-shadow-md">
+                    반갑구먼유! 백암고 1학년 3반 들녘 홈피에 잘 오셨어유!
+                </h2>
+                <p class="text-amber-200 text-sm md:text-base font-medium max-w-xl leading-relaxed">
+                    열심히 모내기하고 공부해서 도시로 나갈 준비 하느라 고생이 많아유! <br class="hidden sm:block"/>
+                    아래 멍석 까아놓은 메뉴들 눌러서 퍼뜩 퍼뜩 필요한 거 찾아보셔유~ 
+                </p>
+
+                <!-- 백암 특산물 순대와 벼 소형 안내 뱃지 -->
+                <div class="mt-4 pt-3 border-t border-amber-700/60 flex flex-wrap items-center gap-3 text-xs text-amber-300 font-gamja">
+                    <span class="flex items-center gap-1 bg-amber-950/40 px-2.5 py-1 rounded border border-amber-800">
+                        <span class="text-base">🥢</span> 원조 백암순대 한 접시 고이 올림
+                    </span>
+                    <span class="flex items-center gap-1 bg-amber-950/40 px-2.5 py-1 rounded border border-amber-800">
+                        <span class="sway-rice">🌾</span> 풍년 기원 모내기 진행 중
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5가지 핵심 메뉴 영역 -->
+        <section class="mb-8">
+            <div class="flex items-center justify-between mb-6 border-b-2 border-amber-200 pb-3">
+                <h3 class="text-xl font-gungsuh font-bold text-amber-900 flex items-center gap-2">
+                    <span class="text-2xl">🛖</span>
+                    동네 주요 바로가기 길목
+                </h3>
+                <span class="text-xs font-bold text-amber-800 bg-amber-200/70 px-3 py-1 rounded-full border border-amber-300 font-gungsuh">
+                    딱 5개 메뉴만 있당께유
+                </span>
+            </div>
+
+            <!-- 5가지 메뉴 그리드 카드 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                <!-- 1. 학사일정 (벼/농사 달력) -->
+                <!-- [링크 수정 안내] href="#" 부분에 연결할 URL 주소를 넣으세요 -->
+                <a href="#" target="_self" class="rural-card group p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-13 h-13 rounded-xl bg-amber-800 text-yellow-200 flex items-center justify-center text-2xl shadow-md border border-amber-950 p-2 group-hover:scale-110 transition-transform">
+                            <!-- 벼 이삭 SVG -->
+                            <svg viewBox="0 0 24 24" class="w-7 h-7 fill-current text-yellow-400">
+                                <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7.17C14.16,7.5 15,8.58 15,9.88V10C16.16,10.33 17,11.41 17,12.71V13C18.16,13.33 19,14.41 19,15.71C19,17.25 17.9,18.5 16.41,18.88L18,22H15.83L14.47,19.28C14,19.38 13.5,19.46 13,19.47V22H11V19.47C10.5,19.46 10,19.38 9.53,19.28L8.17,22H6L7.59,18.88C6.1,18.5 5,17.25 5,15.71C5,14.41 5.84,13.33 7,13V12.71C7,11.41 7.84,10.33 9,10V9.88C9,8.58 9.84,7.5 11,7.17V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2Z" />
+                            </svg>
+                        </div>
+                        <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center group-hover:bg-amber-800 group-hover:text-yellow-200 transition-colors border border-amber-300">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-extrabold text-amber-700 bg-amber-100/80 px-2.5 py-0.5 rounded inline-block mb-1 font-gamja">1등 농사 달력</span>
+                        <h4 class="text-xl font-gungsuh font-bold text-amber-950 group-hover:text-amber-700 transition-colors">1. 학사일정</h4>
+                        <p class="text-xs text-amber-800 mt-1 font-medium leading-relaxed">학교 시험날이랑 방학 언젠가 달력에 딱 적어놨어유</p>
+                    </div>
+                </a>
+
+                <!-- 2. 수행평가 안내 (모내기/숙제 검사) -->
+                <!-- [링크 수정 안내] href="#" 부분에 연결할 URL 주소를 넣으세요 -->
+                <a href="#" target="_self" class="rural-card group p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-13 h-13 rounded-xl bg-emerald-800 text-emerald-100 flex items-center justify-center text-2xl shadow-md border border-emerald-950 p-2 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-file-pen"></i>
+                        </div>
+                        <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center group-hover:bg-emerald-800 group-hover:text-emerald-100 transition-colors border border-emerald-300">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-extrabold text-emerald-700 bg-emerald-100/80 px-2.5 py-0.5 rounded inline-block mb-1 font-gamja">밀리면 욕봐유</span>
+                        <h4 class="text-xl font-gungsuh font-bold text-amber-950 group-hover:text-emerald-700 transition-colors">2. 수행평가 안내</h4>
+                        <p class="text-xs text-amber-800 mt-1 font-medium leading-relaxed">과제 제출일 놓치면 쌤한테 모내기장 끌려가니 퍼뜩 확인하셔유</p>
+                    </div>
+                </a>
+
+                <!-- 3. 시간표 (시계/수업시간) -->
+                <!-- [링크 수정 안내] href="#" 부분에 연결할 URL 주소를 넣으세요 -->
+                <a href="#" target="_self" class="rural-card group p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-13 h-13 rounded-xl bg-amber-700 text-amber-100 flex items-center justify-center text-2xl shadow-md border border-amber-900 p-2 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-regular fa-clock"></i>
+                        </div>
+                        <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center group-hover:bg-amber-700 group-hover:text-amber-100 transition-colors border border-amber-300">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-extrabold text-amber-800 bg-amber-100/80 px-2.5 py-0.5 rounded inline-block mb-1 font-gamja">오늘 뭔 수업이유</span>
+                        <h4 class="text-xl font-gungsuh font-bold text-amber-950 group-hover:text-amber-800 transition-colors">3. 시간표</h4>
+                        <p class="text-xs text-amber-800 mt-1 font-medium leading-relaxed">오늘 무슨 책 챙겨야 하나 요일별로 훑어보셔유</p>
+                    </div>
+                </a>
+
+                <!-- 4. 급식표 (백암순대 및 시골 밥상) -->
+                <!-- [링크 수정 안내] href="#" 부분에 연결할 URL 주소를 넣으세요 -->
+                <a href="#" target="_self" class="rural-card group p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between">
+                    <div class="flex items-start justify-between mb-4">
+                        <!-- 백암순대 스페셜 급식 아이콘 -->
+                        <div class="w-13 h-13 rounded-xl bg-red-900 text-red-100 flex items-center justify-center text-xl shadow-md border border-red-950 p-1.5 group-hover:scale-110 transition-transform relative">
+                            <svg viewBox="0 0 100 100" class="w-8 h-8">
+                                <circle cx="50" cy="50" r="42" fill="#78231c" stroke="#f0c090" stroke-width="4"/>
+                                <ellipse cx="35" cy="40" rx="14" ry="9" fill="#3b0e0a" />
+                                <ellipse cx="65" cy="40" rx="14" ry="9" fill="#3b0e0a" />
+                                <ellipse cx="50" cy="65" rx="16" ry="10" fill="#3b0e0a" />
+                            </svg>
+                            <!-- 순대 뱃지 표시 -->
+                            <span class="absolute -top-1.5 -right-1.5 bg-yellow-400 text-amber-950 text-[9px] font-black px-1 rounded border border-amber-800">순대</span>
+                        </div>
+                        <span class="w-8 h-8 rounded-full bg-red-100 text-red-800 flex items-center justify-center group-hover:bg-red-900 group-hover:text-red-100 transition-colors border border-red-300">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-extrabold text-red-800 bg-red-100/80 px-2.5 py-0.5 rounded inline-block mb-1 font-gamja">오늘 반찬 뭐유</span>
+                        <h4 class="text-xl font-gungsuh font-bold text-amber-950 group-hover:text-red-800 transition-colors">4. 급식표</h4>
+                        <p class="text-xs text-amber-800 mt-1 font-medium leading-relaxed">오늘 밥상에 백암순대 국밥 나오나 퍼뜩 구경해봐유</p>
+                    </div>
+                </a>
+
+                <!-- 5. 익명 게시판 (대나무숲/동네 사랑방) -->
+                <!-- [링크 수정 안내] href="#" 부분에 연결할 URL 주소를 넣으세요 -->
+                <a href="#" target="_self" class="rural-card group p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-13 h-13 rounded-xl bg-stone-800 text-stone-100 flex items-center justify-center text-2xl shadow-md border border-stone-950 p-2 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <span class="w-8 h-8 rounded-full bg-stone-200 text-stone-800 flex items-center justify-center group-hover:bg-stone-800 group-hover:text-stone-100 transition-colors border border-stone-300">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-extrabold text-stone-700 bg-stone-200/80 px-2.5 py-0.5 rounded inline-block mb-1 font-gamja">속천불 비밀방</span>
+                        <h4 class="text-xl font-gungsuh font-bold text-amber-950 group-hover:text-stone-700 transition-colors">5. 익명 게시판</h4>
+                        <p class="text-xs text-amber-800 mt-1 font-medium leading-relaxed">남 몰래 가슴속 앓던 이야기 털어놓는 대나무숲이유</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- 하단 푸터 영역 -->
+    <footer class="bg-amber-900 text-amber-200 border-t-4 border-amber-950 py-6 text-center text-xs font-gungsuh">
+        <p class="flex items-center justify-center gap-2 mb-1">
+            <span class="sway-rice">🌾</span>
+            <span>© 백암고등학교 1학년 3반 | 백암순대 길목에서 벼 익어가는 소리와 함께</span>
+            <span class="sway-rice">🌾</span>
+        </p>
+        <p class="text-amber-400/80 text-[11px]">공부해서 도시로 가고, 모내기는 꼭 참석하며, 감자는 절대 훔치지 맙시다.</p>
+    </footer>
+
+</body>
+</html>
